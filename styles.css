@@ -81,7 +81,7 @@ img, .iSeat {
     box-sizing: border-box;
 }
 
-input[type=submit] {
+form button[type=button] {
     width: 25%;
     background-color: #4c8faf;
     color: white;
@@ -92,7 +92,7 @@ input[type=submit] {
     cursor: pointer;
 }
 
-input[type=submit]:hover {
+form button[type=button]:hover {
     background-color: #1c7ca8;
 }
 
