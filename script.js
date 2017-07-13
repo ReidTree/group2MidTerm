@@ -50,4 +50,5 @@ $(document).ready(function(){
     // console.log($('.reserve').data('res'));
     $('.form').show();
 });
+  $('#submit').on('click')
 });
