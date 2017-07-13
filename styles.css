@@ -1,20 +1,24 @@
-.bgImg, .bgImg img {
-  position: fixed;
-  margin: 0;
-  height: 100%;
-  width: 100%;
-  z-index: -1;
+
+.bg {
+    background-image: url("images/theater1.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center, center;
+    position: relative;
+
 }
 
+
 .seats {
-  width: 1000px;
+  max-width: 1000px;
+  padding-top: 650px;
   margin: 0 auto;
 }
 .iSeat {
   display: inline-block;
   padding: 5px;
 }
-img, .iSeat {
+.iSeat img {
   width: 90px;
   height: 90px;
 }
@@ -47,7 +51,7 @@ img, .iSeat {
    bottom: -16px;
  }
  .arrow.top {
-   top: -16px;
+   top: -6px;
    bottom: auto;
  }
  .arrow.left {
@@ -71,6 +75,9 @@ img, .iSeat {
  }
 
  .form {
+   top: 29px;
+   left: 705px;
+   position: absolute;
    width: 500px;
    height: 350px;
    margin: 0 auto;
@@ -111,4 +118,13 @@ form {
     border-radius: 5px;
     background-color: #f2f2f2;
     padding: 20px;
+}
+@media only screen and (min-width: 450px){
+
+}
+@media only screen and (min-width: 768px){
+
+}
+@media only screen and (min-width: 1200px) {
+
 }
