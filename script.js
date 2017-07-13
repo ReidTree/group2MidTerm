@@ -51,5 +51,6 @@ $(document).ready(function(){
     $('.reserve').data('val', 2);
     // $('.reserve').attr('title', "This spot is reserved for ");
     // console.log($('.reserve').data('res'));
+    $('.form').show();
 });
 });
