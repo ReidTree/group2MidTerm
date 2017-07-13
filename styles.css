@@ -96,7 +96,7 @@ input[type=submit]:hover {
     background-color: #1c7ca8;
 }
 
-div {
+form {
     height: 350px;
     width: 500px;
     margin: 0 auto;
