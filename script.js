@@ -1,20 +1,23 @@
 $(document).ready(function(){
-  $( function() {
-      $( document ).tooltip({
-        position: {
-          my: "center bottom-20",
-          at: "center top",
-          using: function( position, feedback ) {
-            $( this ).css( position );
-            $( "<div>" )
-              .addClass( "arrow" )
-              .addClass( feedback.vertical )
-              .addClass( feedback.horizontal )
-              .appendTo( this );
-          }
-        }
-      });
-    } );
+
+//tooltip
+  // $( function() {
+  //     $( document ).tooltip({
+  //       position: {
+  //         my: "center bottom-20",
+  //         at: "center top",
+  //         using: function( position, feedback ) {
+  //           $( this ).css( position );
+  //           $( "<div>" )
+  //             .addClass( "arrow" )
+  //             .addClass( feedback.vertical )
+  //             .addClass( feedback.horizontal )
+  //             .appendTo( this );
+  //         }
+  //       }
+  //     });
+  //   } );
+
 
   var totalRow = null;
   var seatTotal = 30;
@@ -41,12 +44,12 @@ $(document).ready(function(){
           $(this).addClass('reserve');
           resCount += 1;
       }
-      console.log($('.reserve').data('res'));
+      console.log(resCount);
   });
   $('#rBtn').on('click', function(){
     $('.reserve').html("<img src='images/reserved.png'>");
     $('.reserve').data('val', 2);
-    $('.reserve').attr('title', "This spot is reserved for ");
+    // $('.reserve').attr('title', "This spot is reserved for ");
     // console.log($('.reserve').data('res'));
 });
 });
