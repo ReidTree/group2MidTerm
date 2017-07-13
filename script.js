@@ -1,22 +1,22 @@
 $(document).ready(function(){
 
-//tooltip
-  // $( function() {
-  //     $( document ).tooltip({
-  //       position: {
-  //         my: "center bottom-20",
-  //         at: "center top",
-  //         using: function( position, feedback ) {
-  //           $( this ).css( position );
-  //           $( "<div>" )
-  //             .addClass( "arrow" )
-  //             .addClass( feedback.vertical )
-  //             .addClass( feedback.horizontal )
-  //             .appendTo( this );
-  //         }
-  //       }
-  //     });
-  //   } );
+// tooltip
+//   $( function() {
+//       $( document ).tooltip({
+//         position: {
+//           my: "center bottom-20",
+//           at: "center top",
+//           using: function( position, feedback ) {
+//             $( this ).css( position );
+//             $( "<div>" )
+//               .addClass( "arrow" )
+//               .addClass( feedback.vertical )
+//               .addClass( feedback.horizontal )
+//               .appendTo( this );
+//           }
+//         }
+//       });
+//     } );
 
 
   var totalRow = null;
@@ -56,6 +56,14 @@ $(document).ready(function(){
       };
   });
 
+
+  $('#submit').before('<input class="radio" type="checkbox" id="soda" value='+1+'>Soda');
+  $('#submit').before('<input class="radio" type="checkbox" id="popcorn" value='+2+'>Popcorn');
+  var radioCount = 0;
+  $('.radio').on('click', function(){
+    radioCount += Number($(this).val());
+    console.log(radioCount);
+  });
   $('#submit').on('click', function(){
     $('.reserve.pop').html("<img src='images/chairPop.png'>");
     $('.reserve.corn').html("<img src='images/chairCorn.png'>");
@@ -68,6 +76,7 @@ $(document).ready(function(){
     $('#phone').val(null);
     $('.form').hide();
     resCount = 0;
+    $('.radio')
   });
 
 });
