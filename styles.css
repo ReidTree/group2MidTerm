@@ -44,6 +44,21 @@
    text-transform: uppercase;
    box-shadow: 0 0 7px black;
  }
+ div .toolText {
+   visibility: hidden;
+   position: absolute;
+   width: 200px;
+   height: 150px;
+   border: 2px solid white;
+   text-align: center;
+   border-radius: 10px;
+   box-shadow: 10px, 10px, 10px, rgba(0, 247, 255, 0.5);
+   background-color: white;
+ }
+ .toolText:hover {
+   visibility: visible;
+ }
+
  .arrow {
    width: 70px;
    height: 16px;

@@ -1,24 +1,24 @@
 $(document).ready(function(){
 
-// tooltip
-  $( function() {
-
-    //tooltip plugin
-      $( document ).tooltip({
-        position: {
-          my: "center bottom-20",
-          at: "center top",
-          using: function( position, feedback ) {
-            $( this ).css( position );
-            $( "<div>" )
-              .addClass( "arrow" )
-              .addClass( feedback.vertical )
-              .addClass( feedback.horizontal )
-              .appendTo( this );
-          }
-        }
-      });
-    } );
+// // tooltip
+//   $( function() {
+//
+//     //tooltip plugin
+//       $( document ).tooltip({
+//         position: {
+//           my: "center bottom-20",
+//           at: "center top",
+//           using: function( position, feedback ) {
+//             $( this ).css( position );
+//             $( "<div>" )
+//               .addClass( "arrow" )
+//               .addClass( feedback.vertical )
+//               .addClass( feedback.horizontal )
+//               .appendTo( this );
+//           }
+//         }
+//       });
+//     } );
 
     //creates array to hold customer info by seat
   var customerArray = [];
@@ -129,8 +129,11 @@ $(document).ready(function(){
 
       //push reserved customer objects to seat array
       if ($('.reserve.seat' + (i+1)).data( 'val') == 2){
-        customerArray.push($('.reserve.seat' + (i+1)).data('customer'))
+        customerArray.push($('.reserve.seat' + (i+1)).data('customer'));
+        $('.reserve.seat' + (i+1)).addClass('tooltip');
         $('.reserve.seat' + (i+1)).attr('title', $('#fname').val() + " " + $('#lname').val() + " has reserved seat " + (i+1) + '.' );
+        var text = $('.reserve.seat' + (i+1)).attr('title');
+          $('.reserve.seat' + (i+1)).before('<div class="toolText">' + text + '</div>');
       };
     };
 
