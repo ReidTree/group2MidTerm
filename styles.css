@@ -8,6 +8,31 @@
 
 }
 
+.validate {
+  color: white;
+  float: right;
+
+}
+
+#leftCurtain, #rightCurtain {
+  position: absolute;
+  z-index: 10;
+}
+
+#leftCurtain {
+  bottom: 396px;
+  left: 440px;
+  height: 700px;
+  width: 600px;
+}
+
+#rightCurtain {
+  bottom: 393px;
+  right: 390px;
+  height: 700px;
+  width: 600px;
+}
+
 .radio {
   margin-left: 130px;
 }
@@ -33,8 +58,9 @@
 .ui-tooltip, .arrow:after {
    background: black;
    border: 2px solid white;
-   width: 400px;
-   height: 400px;
+   text-align: center;
+   width: 300px;
+   height: auto;
  }
  .ui-tooltip {
    padding: 10px 20px;
@@ -43,6 +69,7 @@
    font: bold 14px "Helvetica Neue", Sans-Serif;
    text-transform: uppercase;
    box-shadow: 0 0 7px black;
+   display: block !important;
  }
  .arrow {
    width: 70px;

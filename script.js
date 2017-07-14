@@ -1,24 +1,24 @@
 $(document).ready(function(){
 
-// tooltip
-  $( function() {
-
-    //tooltip plugin
-      $( document ).tooltip({
-        position: {
-          my: "center bottom-20",
-          at: "center top",
-          using: function( position, feedback ) {
-            $( this ).css( position );
-            $( "<div>" )
-              .addClass( "arrow" )
-              .addClass( feedback.vertical )
-              .addClass( feedback.horizontal )
-              .appendTo( this );
-          }
-        }
-      });
-    } );
+// // tooltip
+//   $( function() {
+//
+//     //tooltip plugin
+//       $( document ).tooltip({
+//         position: {
+//           my: "center bottom-20",
+//           at: "center top",
+//           using: function( position, feedback ) {
+//             $( this ).css( position );
+//             $( "<div>" )
+//               .addClass( "arrow" )
+//               .addClass( feedback.vertical )
+//               .addClass( feedback.horizontal )
+//               .appendTo( this );
+//           }
+//         }
+//       });
+//     } );
 
     //creates array to hold customer info by seat
   var customerArray = [];
@@ -30,6 +30,7 @@ $(document).ready(function(){
     $('.seats').append("<div class='iSeat " + 'seat'+ (i+1) + "'><img src='images/chair.png'></div>");
     $('.seat' + (i+1)).data('res', i+1);
   };
+
 
   //seat click function
   var resCount = 0
@@ -53,9 +54,30 @@ $(document).ready(function(){
 
       //show or hide form on seat selection
       if (resCount > 0 ) {
-        $('.form').show();
+        // $('.form').show();
+        $('#leftCurtain').animate({
+          width: '10%'
+        }, 1000);
+
+        $('#rightCurtain').animate({
+          width: '10%'
+        }, 1000);
+
+
       } else {
-        $('.form').hide();
+
+        $('#leftCurtain').animate({
+          width: '600px'
+        }, 1000);
+
+        $('#rightCurtain').animate({
+          width: '600px'
+        }, 1000);
+        // $('.form').hide();
+
+
+
+
       };
   });
 
@@ -88,12 +110,12 @@ $(document).ready(function(){
     validArray.forEach(function(x) {
       if ($('#' + x).val() != '') {
         $('#' + x).removeData('submit');
-        $('#' + x).next('p').html('');
+        $('#' + x).prev('span').html('');
       } else if ($('#' + x).data('submit') === 1) {
         console.log('try');
       } else if ($('#' + x).val() === '') {
         $('#' + x).data('submit', 1);
-        $('#' + x).after('<p class="validate">Please enter field above</p>');
+        $('#' + x).before('<span class="validate">(Please enter field below)</span>');
       };
     });
     if ($('#fname').data('submit') === 1 || $('#lname').data('submit') === 1 || $('#email').data('submit') === 1 || $('#phone').data('submit') === 1) {
@@ -128,10 +150,13 @@ $(document).ready(function(){
       });
 
       //push reserved customer objects to seat array
-      if ($('.reserve.seat' + (i+1)).data( 'val') == 2){
-        customerArray.push($('.reserve.seat' + (i+1)).data('customer'))
-        $('.reserve.seat' + (i+1)).attr('title', $('#fname').val() + " " + $('#lname').val() + " has reserved seat " + (i+1) + '.' );
-      };
+        if ($('.reserve.seat' + (i+1)).data( 'val') == 2){
+          customerArray.push($('.reserve.seat' + (i+1)).data('customer'));
+          $('.reserve.seat' + (i+1)).addClass('tooltip');
+          $('.reserve.seat' + (i+1)).attr('title', $('#fname').val() + " " + $('#lname').val() + " has reserved seat " + (i+1) + '.' );
+          var text = $('.reserve.seat' + (i+1)).attr('title');
+            $('.reserve.seat' + (i+1)).before('<span class="toolText">' + text + '</span>');
+        };
     };
 
     //>console seat array  with customer object
@@ -145,7 +170,13 @@ $(document).ready(function(){
     $('#lname').val(null);
     $('#email').val(null);
     $('#phone').val(null);
-    $('.form').hide();
+    $('#leftCurtain').animate({
+      width: '600px'
+    }, 1000);
+
+    $('#rightCurtain').animate({
+      width: '600px'
+    }, 1000);
 
     // resets seat selection for click function
     resCount = 0;
