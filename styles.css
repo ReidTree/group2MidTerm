@@ -8,6 +8,9 @@
 
 }
 
+.radio {
+  margin-left: 130px;
+}
 
 .seats {
   max-width: 1000px;
@@ -75,18 +78,23 @@
  }
 
  .form {
+   font-family: arial;
+   opacity: .8;
+   filter: alpha(opacity=80);
    top: 29px;
    left: 705px;
    position: absolute;
    width: 500px;
-   height: 350px;
+   height: 400px;
    margin: 0 auto;
    border-radius: 5px;
-   background-color: #f2f2f2;
+   background-color: #964e4e;
    padding: 20px;
+   box-shadow: 7px 7px 2px #323a30;
  }
 
  input[type=text], select {
+   columns: grey;
     width: 100%;
     padding: 12px 20px;
     margin: 8px 0;
@@ -98,17 +106,17 @@
 
 form button[type=button] {
     width: 25%;
-    background-color: #4c8faf;
+    background-color: #493756;
     color: white;
     padding: 14px 20px;
-    margin: 10px 35%;
+    margin: 30px 36%;
     border: none;
     border-radius: 4px;
     cursor: pointer;
 }
 
 form button[type=button]:hover {
-    background-color: #1c7ca8;
+    background-color: grey;
 }
 
 form {
@@ -116,15 +124,6 @@ form {
     width: 500px;
     margin: 0 auto;
     border-radius: 5px;
-    background-color: #f2f2f2;
+    background: grey;
     padding: 20px;
-}
-@media only screen and (min-width: 450px){
-
-}
-@media only screen and (min-width: 768px){
-
-}
-@media only screen and (min-width: 1200px) {
-
 }
