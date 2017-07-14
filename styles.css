@@ -20,75 +20,73 @@
 }
 
 #leftCurtain {
-  bottom: 396px;
-  left: 440px;
-  height: 700px;
-  width: 600px;
+  top: -100px;
+  left: 21%;
+  height: 71%;
+  width: 40%;
 }
 
 #rightCurtain {
-  bottom: 393px;
-  right: 390px;
-  height: 700px;
-  width: 600px;
+  top: -100px;
+  right: 17%;
+  height: 71%;
+  width: 40%;
 }
 
 .radio {
-  margin-left: 130px;
+  margin-left: 10%;
 }
 
 .seats {
-  max-width: 1000px;
-  padding-top: 650px;
-  margin: 0 auto;
+  width: 70%;
+  padding-top: 43.5%;
+  margin: 0 19%;
 }
 .iSeat {
+  width: 10%;
+  height: auto;
   display: inline-block;
-  padding: 5px;
+  padding: 0;
 }
 .iSeat img {
-  width: 90px;
-  height: 90px;
-}
-#rBtn{
-  position: fixed;
-  top: 20px;
-  left: 20px;
+  width: 75%;
+  height: auto;
 }
 
  .form {
+   font-size: 100%;
    font-family: arial;
    opacity: .8;
    filter: alpha(opacity=80);
-   top: 29px;
-   left: 705px;
+   /* top: 29px; */
+   /* left: 678px; */
    position: absolute;
-   width: 500px;
-   height: 400px;
-   margin: 0 auto;
+   width: 30%;
+   height: auto;
+   margin: 1% 35%;
    border-radius: 5px;
    background-color: #964e4e;
-   padding: 20px;
+   padding: 2%;
    box-shadow: 7px 7px 2px #323a30;
  }
 
  input[type=text], select {
    columns: grey;
-    width: 100%;
-    padding: 12px 20px;
-    margin: 8px 0;
-    display: inline-block;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
+   width: 100%;
+   padding: 1% 3%;
+   margin: 2% 0;
+   display: inline-block;
+   border: 1px solid #ccc;
+   border-radius: 4px;
+   box-sizing: border-box;
 }
 
 form button[type=button] {
     width: 25%;
     background-color: #493756;
     color: white;
-    padding: 14px 20px;
-    margin: 30px 36%;
+    padding: 3% 6%;
+    margin: 4% 36% -2% 36%;
     border: none;
     border-radius: 4px;
     cursor: pointer;
@@ -98,11 +96,11 @@ form button[type=button]:hover {
     background-color: grey;
 }
 
-form {
+/*form {
     height: 350px;
     width: 500px;
     margin: 0 auto;
     border-radius: 5px;
     background: grey;
     padding: 20px;
-}
+}*/

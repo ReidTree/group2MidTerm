@@ -71,11 +71,11 @@ $(document).ready(function(){
       } else {
 
         $('#leftCurtain').animate({
-          width: '600px'
+          width: '40%'
         }, 1000);
 
         $('#rightCurtain').animate({
-          width: '600px'
+          width: '40%'
         }, 1000);
         // $('.form').hide();
 
