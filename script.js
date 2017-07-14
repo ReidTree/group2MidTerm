@@ -1,36 +1,37 @@
 $(document).ready(function(){
 
 // tooltip
-//   $( function() {
-//       $( document ).tooltip({
-//         position: {
-//           my: "center bottom-20",
-//           at: "center top",
-//           using: function( position, feedback ) {
-//             $( this ).css( position );
-//             $( "<div>" )
-//               .addClass( "arrow" )
-//               .addClass( feedback.vertical )
-//               .addClass( feedback.horizontal )
-//               .appendTo( this );
-//           }
-//         }
-//       });
-//     } );
+  $( function() {
 
+    //tooltip plugin
+      $( document ).tooltip({
+        position: {
+          my: "center bottom-20",
+          at: "center top",
+          using: function( position, feedback ) {
+            $( this ).css( position );
+            $( "<div>" )
+              .addClass( "arrow" )
+              .addClass( feedback.vertical )
+              .addClass( feedback.horizontal )
+              .appendTo( this );
+          }
+        }
+      });
+    } );
 
+    //creates array to hold customer info by seat
+  var customerArray = [];
+
+  //seat content append
   var totalRow = null;
   var seatTotal = 30;
   for (var i = 0; i < seatTotal; i++) {
     $('.seats').append("<div class='iSeat " + 'seat'+ (i+1) + "'><img src='images/chair.png'></div>");
     $('.seat' + (i+1)).data('res', i+1);
-    if (i%2 == 0) {
-      $('.seat' + (i+1)).addClass('pop');
-    } else {
-      $('.seat' + (i+1)).addClass('corn');
-    }
-  }
+  };
 
+  //seat click function
   var resCount = 0
   $('.seats .iSeat').data('val', 0);
   $('.seats .iSeat').on('mouseenter', function() {
@@ -49,6 +50,8 @@ $(document).ready(function(){
           $(this).addClass('reserve');
           resCount += 1;
       }
+
+      //show or hide form on seat selection
       if (resCount > 0 ) {
         $('.form').show();
       } else {
@@ -56,27 +59,98 @@ $(document).ready(function(){
       };
   });
 
-
+  //checkbox for concessions
   $('#submit').before('<input class="radio" type="checkbox" id="soda" value='+1+'>Soda');
   $('#submit').before('<input class="radio" type="checkbox" id="popcorn" value='+2+'>Popcorn');
-  var radioCount = 0;
-  $('.radio').on('click', function(){
-    radioCount += Number($(this).val());
-    console.log(radioCount);
+  var sodaCount = 0;
+  var cornCount = 0;
+  $('#soda').on('click', function(){
+    if (sodaCount===1) {
+      sodaCount -= 1;
+    } else {
+      sodaCount += 1;
+    }
   });
-  $('#submit').on('click', function(){
-    $('.reserve.pop').html("<img src='images/chairPop.png'>");
-    $('.reserve.corn').html("<img src='images/chairCorn.png'>");
+  $('#popcorn').on('click', function(){
+    if (cornCount===1) {
+      cornCount -= 1;
+    } else {
+      cornCount += 1;
+    }
+  });
+
+  //initialize array to loop through form validation
+  var validArray = ['fname','lname','email','phone'];
+
+  $('#submit').on('click', function(event){
+
+    //form validation
+    validArray.forEach(function(x) {
+      if ($('#' + x).val() != '') {
+        $('#' + x).removeData('submit');
+        $('#' + x).next('p').html('');
+      } else if ($('#' + x).data('submit') === 1) {
+        console.log('try');
+      } else if ($('#' + x).val() === '') {
+        $('#' + x).data('submit', 1);
+        $('#' + x).after('<p class="validate">Please enter field above</p>');
+      };
+    });
+    if ($('#fname').data('submit') === 1 || $('#lname').data('submit') === 1 || $('#email').data('submit') === 1 || $('#phone').data('submit') === 1) {
+      return;
+    };
+
+    // concessions claim adding total
+    var checkout = cornCount + sodaCount;
+    var claim = null;
+    if (cornCount === 1 && checkout === 1) {
+      $('.reserve').html("<img src='images/chairCorn.png'>");
+      claim = 'Popcorn';
+    } else if (sodaCount === 1 && checkout === 1) {
+      $('.reserve').html("<img src='images/chairPop.png'>");
+      claim = 'Pop';
+    } else if (checkout === 2) {
+      claim = 'Pop and Popcorn';
+    };
+
+    //opt out of if else seat selection
     $('.reserve').data('val', 2);
-    $('.reserve').attr('title', $('#fname').val() + " " + $('#lname').val() + " has reserved this seat." );
+
+    // seat array with customer objects
+    for (var i = 0; i < seatTotal; i++) {
+      $('.reserve.seat' + (i+1)).data( 'customer', {
+        firstName: $('#fname').val(),
+        lastName: $('#lname').val(),
+        phoneNumber: $('#phone').val(),
+        email: $('#email').val(),
+        seatId: $('.seat' + (i+1)).data('res'),
+        claim: claim
+      });
+
+      //push reserved customer objects to seat array
+      if ($('.reserve.seat' + (i+1)).data( 'val') == 2){
+        customerArray.push($('.reserve.seat' + (i+1)).data('customer'))
+        $('.reserve.seat' + (i+1)).attr('title', $('#fname').val() + " " + $('#lname').val() + " has reserved seat " + (i+1) + '.' );
+      };
+    };
+
+    //>console seat array  with customer object
+    console.log(customerArray);
+
+    //remove reserve class to opt out of future reservations
     $('.reserve').removeClass('reserve');
+
+     //clears form
     $('#fname').val(null);
     $('#lname').val(null);
     $('#email').val(null);
     $('#phone').val(null);
     $('.form').hide();
+
+    // resets seat selection for click function
     resCount = 0;
-    $('.radio')
+
   });
+
 
 });
