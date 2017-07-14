@@ -1,5 +1,9 @@
 $(document).ready(function(){
 
+
+  $('.toolTip').tooltip({
+              tooltipClass: "tooltip-styling"
+          });
 // // tooltip
 //   $( function() {
 //
@@ -46,7 +50,7 @@ $(document).ready(function(){
           $(this).removeClass('reserve');
           resCount -= 1;
       } else if ($(this).data('val') == 0) {
-          $(this).find('img').attr("src", 'images/chairGuy.png',);
+          $(this).find('img').attr("src", 'images/chairClick.png',);
           $(this).data('val', 1);
           $(this).addClass('reserve');
           resCount += 1;
@@ -132,8 +136,9 @@ $(document).ready(function(){
       $('.reserve').html("<img src='images/chairPop.png'>");
       claim = 'Pop';
     } else if (checkout === 2) {
+      $('.reserve').html("<img src='images/chairBoth.png'>")
       claim = 'Pop and Popcorn';
-    };
+    } else {$('.reserve').html("<img src='images/chairGuy.png'>")};
 
     //opt out of if else seat selection
     $('.reserve').data('val', 2);
@@ -152,10 +157,8 @@ $(document).ready(function(){
       //push reserved customer objects to seat array
         if ($('.reserve.seat' + (i+1)).data( 'val') == 2){
           customerArray.push($('.reserve.seat' + (i+1)).data('customer'));
-          $('.reserve.seat' + (i+1)).addClass('tooltip');
+          $('.reserve.seat' + (i+1)).addClass('toolTip');
           $('.reserve.seat' + (i+1)).attr('title', $('#fname').val() + " " + $('#lname').val() + " has reserved seat " + (i+1) + '.' );
-          var text = $('.reserve.seat' + (i+1)).attr('title');
-            $('.reserve.seat' + (i+1)).before('<span class="toolText">' + text + '</span>');
         };
     };
 
